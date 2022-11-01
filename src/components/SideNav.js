@@ -8,6 +8,8 @@ import {
   ListItemIcon,
   ListItemText,
   Drawer,
+  Stack,
+  Button,
 } from "@mui/material";
 
 import HomeIcon from "@mui/icons-material/Home";
@@ -21,7 +23,7 @@ import SpotifyImage from "../images/Spotify-symbol.jpg";
 const drawerWidth = 240;
 const textColor = "#e1dfdd";
 
-function SideNav(props) {
+function SideNav() {
   const drawer = (
     <Box style={{ color: textColor, backgroundColor: "black" }}>
       <Box
@@ -99,10 +101,31 @@ function SideNav(props) {
               boxSizing: "border-box",
               width: drawerWidth,
               backgroundColor: "black",
+              color: textColor,
             },
           }}
         >
           {drawer}
+          <Stack
+            sx={{ position: "absolute", bottom: 15, left: 10 }}
+            direction="column"
+          >
+            <Button variant="text" sx={{ fontSize: 10, color: textColor }}>
+              Cookies
+            </Button>
+            <Button
+              variant="text"
+              sx={{ fontSize: 10, color: textColor }}
+              style={{
+                color: textColor,
+                "&:hover": {
+                  textDecoration: "underline #121212",
+                },
+              }}
+            >
+              Privacy
+            </Button>
+          </Stack>
         </Drawer>
       </Box>
       <Box
