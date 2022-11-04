@@ -23,14 +23,14 @@ import SpotifyImage from "../images/Spotify-symbol.jpg";
 const drawerWidth = 240;
 const textColor = "#e1dfdd";
 
-function SideNav() {
+function SideNav({ children }) {
   const drawer = (
     <Box style={{ color: textColor, backgroundColor: "black" }}>
       <Box
         component="img"
         sx={{
           height: 60,
-          width: 200,
+          // width: 200,
         }}
         src={SpotifyImage}
         alt="Spotify Logo"
@@ -85,14 +85,12 @@ function SideNav() {
   );
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box>
       <Box
         component="nav"
-        sx={{ width: { sm: drawerWidth } }}
+        sx={{ width: drawerWidth }}
         aria-label="mailbox folders"
       >
-        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
-
         <Drawer
           variant="permanent"
           sx={{
@@ -128,15 +126,9 @@ function SideNav() {
           </Stack>
         </Drawer>
       </Box>
-      <Box
-        component="main"
-        sx={{
-          flexGrow: 1,
-          p: 3,
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
-        }}
-      >
+      <Box sx={{ marginLeft: `${drawerWidth}px` }}>
         {/* Other content go here*/}
+        {children}
       </Box>
     </Box>
   );
